@@ -3,9 +3,29 @@ package edu.mum.farmer.app.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Order {
+	@Id
+	@GeneratedValue
+	private long id;
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+	/*
+	@ManyToOne
 	private List<OrderLine> orderLineList = new ArrayList<OrderLine>();
 	private double totalPrice;
+
+	
 
 	public void addProduct(Product p) {
 		if (!getProductList().contains(p)) {
@@ -55,14 +75,6 @@ public class Order {
 		this.orderLineList = orderLineList;
 	}
 
-	public double getPrice() {
-		totalPrice = 0;
-		for (OrderLine oL : orderLineList) {
-			totalPrice += oL.getQuantity() * oL.getProduct().getPrice();
-		}
-		return totalPrice;
-	}
-
 	public double getTotalPrice() {
 		totalPrice = 0;
 		for (OrderLine oL : orderLineList) {
@@ -74,5 +86,5 @@ public class Order {
 	public void setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
 	}
-
+*/
 }

@@ -1,21 +1,30 @@
 package edu.mum.farmer.app.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Product {
 	private double price;
 
-	private int p_id;
-	private String name;
+	@Id
+	@GeneratedValue
+	private long id;
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+	
+	/*private String name;
 	private String qty;
 
+	
+
 	private Person preson;
-
-	public int getP_id() {
-		return p_id;
-	}
-
-	public void setP_id(int p_id) {
-		this.p_id = p_id;
-	}
 
 	public String getName() {
 		return name;
@@ -40,7 +49,6 @@ public class Product {
 	public void setPreson(Person preson) {
 		this.preson = preson;
 	}
-	
 
 	public double getPrice() {
 		return price;
@@ -57,8 +65,8 @@ public class Product {
 		else if (!(obj instanceof Product))
 			return false;
 		Product product = (Product) obj;
-		return product.p_id == p_id;
+		return product.id == id;
 
 	}
-
+*/
 }
