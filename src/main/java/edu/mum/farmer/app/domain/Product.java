@@ -6,13 +6,13 @@ import javax.persistence.Id;
 
 @Entity
 public class Product {
-	private double price;
-
+	
 	@Id
 	@GeneratedValue
 	private long id;	
 	private String name;
 	private String qty;
+	private double price;
 
 	//private Person preson;
 
