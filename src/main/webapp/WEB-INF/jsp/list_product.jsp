@@ -9,12 +9,33 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<style>
+table, th, td {
+    border: 1px solid black;
+}
+</style>
 </head>
 <body>
-	
-	 <c:forEach items="${products}" var="product">
-            <c:out value="${product.name}"/>
-     </c:forEach>     	
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+			    <th>Quantity</th> 
+			    <th>Price</th>
+			    <th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			 <c:forEach items="${products}" var="product">
+		            <tr>
+		            	<td><c:out value="${product.name}"/></td>
+		            	<td><c:out value="${product.qty}"/></td>
+		            	<td><c:out value="${product.price}"/></td>
+		            	<td>Delete</td>
+		            </tr>
+		     </c:forEach> 
+	     </tbody>
+     </table>    	
 		<br>
 
 
