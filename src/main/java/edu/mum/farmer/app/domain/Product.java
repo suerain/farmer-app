@@ -10,21 +10,11 @@ public class Product {
 
 	@Id
 	@GeneratedValue
-	private long id;
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-	
-	/*private String name;
+	private long id;	
+	private String name;
 	private String qty;
 
-	
-
-	private Person preson;
+	//private Person preson;
 
 	public String getName() {
 		return name;
@@ -42,14 +32,6 @@ public class Product {
 		this.qty = qty;
 	}
 
-	public Person getPreson() {
-		return preson;
-	}
-
-	public void setPreson(Person preson) {
-		this.preson = preson;
-	}
-
 	public double getPrice() {
 		return price;
 	}
@@ -57,6 +39,23 @@ public class Product {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+	
+/*	public Person getPreson() {
+		return preson;
+	}
+
+	public void setPreson(Person preson) {
+		this.preson = preson;
+	}*/
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -68,5 +67,5 @@ public class Product {
 		return product.id == id;
 
 	}
-*/
+
 }
