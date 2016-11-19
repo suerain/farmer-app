@@ -1,14 +1,17 @@
 package edu.mum.farmer.app.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class OrderLine {
 	@Id
 	@GeneratedValue
 	private long id;
+
 	public long getId() {
 		return id;
 	}
@@ -16,16 +19,24 @@ public class OrderLine {
 	public void setId(long id) {
 		this.id = id;
 	}
-	
-	/*private Product product;
+
+	@OneToOne(cascade = CascadeType.PERSIST)
+	private Product product;
 	private int quantity;
+	private double price;
 
 	public OrderLine(Product product) {
 		this.product = product;
 		this.quantity = 1;
 	}
 
-	
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = product.getPrice() * quantity;
+	}
 
 	public Product getProduct() {
 		return product;
@@ -42,5 +53,5 @@ public class OrderLine {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-*/
+
 }
