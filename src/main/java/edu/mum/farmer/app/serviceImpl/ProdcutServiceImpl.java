@@ -33,6 +33,24 @@ public class ProdcutServiceImpl implements ProductService{
 		// TODO Auto-generated method stub
 		return (List<Product>) productRepository.findAll();
 	}
+
+	@Override
+	public Product findOne(long id) {
+		// TODO Auto-generated method stub
+		return productRepository.findOne(id);
+	}
+
+	@Override
+	public void delete(long id) {
+		// TODO Auto-generated method stub
+		productRepository.delete(id);
+	}
+
+	@Override
+	public Product update(Product product) {
+		// TODO Auto-generated method stub
+		return productRepository.save(product);
+	}
 	
 	
 
