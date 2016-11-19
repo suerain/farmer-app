@@ -1,6 +1,7 @@
 package edu.mum.farmer.app.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -13,7 +14,8 @@ public class Product {
 	private String name;
 	private String qty;
 	private double price;
-
+	@Enumerated
+	private Category category;
 	//private Person preson;
 
 	public String getName() {
@@ -66,6 +68,14 @@ public class Product {
 		Product product = (Product) obj;
 		return product.id == id;
 
+	}
+
+	private Category getCategory() {
+		return category;
+	}
+
+	private void setCategory(Category category) {
+		this.category = category;
 	}
 
 }

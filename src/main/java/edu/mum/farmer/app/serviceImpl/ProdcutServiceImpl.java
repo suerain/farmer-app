@@ -1,5 +1,7 @@
 package edu.mum.farmer.app.serviceImpl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +27,13 @@ public class ProdcutServiceImpl implements ProductService{
 		// TODO Auto-generated method stub
 		return productRepository.save(product);
 	}
+
+	@Override
+	public List<Product> findAllProducts() {
+		// TODO Auto-generated method stub
+		return (List<Product>) productRepository.findAll();
+	}
+	
+	
 
 }
