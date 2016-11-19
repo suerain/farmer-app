@@ -11,24 +11,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/product" method="POST">
-		Product Name:<br> 
-		<input type="text" name="name"> 
-		<br>Quantity:<br> 
-		<input type="text" name="qty"> 
-		<br>Price:<br> 
-		<input type="text" name="price"> 
-		<br> 
-	<select name="category">
-	 <c:forEach items="${categories}" var="category">
-        <option  value="${category}">
-            <c:out value="${category}"/>
-        </option>
-        </c:forEach>
-      </select>   	
+	
+	 <c:forEach items="${products}" var="product">
+            <c:out value="${product.name}"/>
+     </c:forEach>     	
 		<br>
-		<input type="submit" value="Submit">
-	</form>
 
 
 </body>

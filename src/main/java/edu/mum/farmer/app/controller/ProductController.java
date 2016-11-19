@@ -29,6 +29,11 @@ public class ProductController {
 		return "redirect:/product";
 	}
 	
+	@RequestMapping(value="/productlist", method=RequestMethod.GET )
+	public String listProduct(Model model) {
+		model.addAttribute("products", productService.findAllProducts());
+		return "list_product";
+	}
 	
 	
 }
