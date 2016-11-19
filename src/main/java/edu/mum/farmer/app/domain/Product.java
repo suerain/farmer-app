@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 public class Product {
@@ -16,7 +19,17 @@ public class Product {
 	private double price;
 	@Enumerated
 	private Category category;
+
+	private String selectedCategory;
 	//private Person preson;
+
+	public String getSelectedCategory() {
+		return selectedCategory;
+	}
+
+	public void setSelectedCategory(String selectedCategory) {
+		this.selectedCategory = selectedCategory;
+	}
 
 	public String getName() {
 		return name;
@@ -70,12 +83,12 @@ public class Product {
 
 	}
 
-	private Category getCategory() {
+	public Category getCategory() {
 		return category;
 	}
 
-	private void setCategory(Category category) {
-		this.category = category;
+	public void setCategory(Category category) {
+		this.category = Category.FRUIT;
 	}
 
 }
