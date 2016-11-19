@@ -1,20 +1,44 @@
 package edu.mum.farmer.app.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Product {
-	
+
 	@Id
 	@GeneratedValue
-	private long id;	
+	private long id;
 	private String name;
 	private String qty;
 	private double price;
+	@Enumerated
+	private Category category;
 
-	//private Person preson;
+	private String selectedCategory;
+
+	@OneToOne(cascade = CascadeType.PERSIST)
+	private Member farmer;
+
+	public Member getFarmer() {
+		return farmer;
+	}
+
+	public void setFarmer(Member farmer) {
+		this.farmer = farmer;
+	}
+
+	public String getSelectedCategory() {
+		return selectedCategory;
+	}
+
+	public void setSelectedCategory(String selectedCategory) {
+		this.selectedCategory = selectedCategory;
+	}
 
 	public String getName() {
 		return name;
@@ -39,7 +63,7 @@ public class Product {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	
+
 	public long getId() {
 		return id;
 	}
@@ -47,15 +71,6 @@ public class Product {
 	public void setId(long id) {
 		this.id = id;
 	}
-	
-/*	public Person getPreson() {
-		return preson;
-	}
-
-	public void setPreson(Person preson) {
-		this.preson = preson;
-	}*/
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -66,6 +81,14 @@ public class Product {
 		Product product = (Product) obj;
 		return product.id == id;
 
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = Category.FRUIT;
 	}
 
 }

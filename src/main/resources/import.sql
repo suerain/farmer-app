@@ -30,7 +30,7 @@ CREATE TABLE `address` (
   `street` varchar(255) DEFAULT NULL,
   `zip_code` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `address` (
 
 LOCK TABLES `address` WRITE;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
-INSERT INTO `address` VALUES (1,'d','d','g','d','h'),(2,'e','f','g','w','g');
+INSERT INTO `address` VALUES (1,'d','fd','d','d','g');
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,7 +58,7 @@ CREATE TABLE `billing_details` (
   PRIMARY KEY (`id`),
   KEY `FKsj5puddbe7arirrqoqkaj6qc5` (`address_id`),
   CONSTRAINT `FKsj5puddbe7arirrqoqkaj6qc5` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +67,6 @@ CREATE TABLE `billing_details` (
 
 LOCK TABLES `billing_details` WRITE;
 /*!40000 ALTER TABLE `billing_details` DISABLE KEYS */;
-INSERT INTO `billing_details` VALUES (1,'','',1);
 /*!40000 ALTER TABLE `billing_details` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,7 +113,7 @@ CREATE TABLE `order_1` (
   CONSTRAINT `FK4xx478md4jwpq32b2ms4ecaq1` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`),
   CONSTRAINT `FK8etyd5hwycfnoen9mgrgxt9gm` FOREIGN KEY (`shipping_address_id`) REFERENCES `address` (`id`),
   CONSTRAINT `FKaaklwhom84pcr32fs6bvhuvuh` FOREIGN KEY (`billing_details_id`) REFERENCES `billing_details` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -123,7 +122,6 @@ CREATE TABLE `order_1` (
 
 LOCK TABLES `order_1` WRITE;
 /*!40000 ALTER TABLE `order_1` DISABLE KEYS */;
-INSERT INTO `order_1` VALUES (1,NULL,0,1,NULL,2);
 /*!40000 ALTER TABLE `order_1` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -211,11 +209,16 @@ DROP TABLE IF EXISTS `product`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `product` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `category` int(11) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `price` double NOT NULL,
   `qty` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `selected_category` varchar(255) DEFAULT NULL,
+  `farmer_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKbayqrvuf45sj8abt0u51tf53p` (`farmer_id`),
+  CONSTRAINT `FKbayqrvuf45sj8abt0u51tf53p` FOREIGN KEY (`farmer_id`) REFERENCES `member` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -224,6 +227,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
+INSERT INTO `product` VALUES (1,1,'d',5,'2',NULL,NULL);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -236,4 +240,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-19 11:15:35
+-- Dump completed on 2016-11-19 12:35:56

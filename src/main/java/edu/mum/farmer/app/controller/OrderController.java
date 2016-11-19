@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import edu.mum.farmer.app.domain.Address;
 import edu.mum.farmer.app.domain.Order;
 import edu.mum.farmer.app.service.IOrderService;
-import edu.mum.farmer.app.service.ProductService;
+import edu.mum.farmer.app.service.IProductService;
 
 @Controller
 public class OrderController {
@@ -21,7 +21,7 @@ public class OrderController {
 	private IOrderService orderService;
 
 	@Autowired
-	private ProductService productService;
+	private IProductService productService;
 
 	@RequestMapping(value = "/addToCart")
 	public String addToCart(@ModelAttribute("order") Order order) {

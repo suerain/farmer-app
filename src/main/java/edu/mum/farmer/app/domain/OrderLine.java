@@ -1,5 +1,6 @@
 package edu.mum.farmer.app.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,7 +20,7 @@ public class OrderLine {
 		this.id = id;
 	}
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
 	private Product product;
 	private int quantity;
 	private double price;
