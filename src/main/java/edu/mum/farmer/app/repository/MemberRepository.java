@@ -12,11 +12,9 @@ import edu.mum.farmer.app.domain.Member;
 public interface MemberRepository extends CrudRepository<Member, Long> {
 	
 	
-	/*@Query("select m from member m join m.credentials a where a.username= :username")
+@Query("select m from Member m where m.credentials.username= :username")
 	public Member findByUserame(@Param("username") String username);
-	*/
-	/*@Query("select u from USER u where u.accountNo = :accountNo")
-	public User findByAccountNo(@Param("accountNo") String accountNo);*/
+	
 	
 	
 }

@@ -18,14 +18,15 @@ public class ProductController {
 	
 	@Autowired
 	ProductService productService;
-	/*@Autowired
+	@Autowired
 	MemberService memberService;
-	*/
+	
 	@RequestMapping(value="/product", method=RequestMethod.GET )
 	public String createProductForm( Principal user , Model model) {
-		/*Member member=memberService.findByUserName("santosh");
+		//Accessing the member to set the Member with Farmer role to Product
+		Member member=memberService.findByUserName(user.getName());
 		System.out.println(member.getFirstName());
-	*/
+	
 		model.addAttribute("user",user);
 		return "create_product";
 	}

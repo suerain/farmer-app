@@ -45,8 +45,8 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Member findByUserName(String username) {
 		// TODO Auto-generated method stub
-		//return memberRepository.findByUserame(username);
-		return null;
+		return memberRepository.findByUserame(username);
+		//return null;
 	}
 
 	
