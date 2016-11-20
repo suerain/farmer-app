@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
 --
 -- Host: localhost    Database: farmerapp
 -- ------------------------------------------------------
--- Server version	5.7.13-log
+-- Server version	5.7.16-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -30,7 +30,7 @@ CREATE TABLE `address` (
   `street` varchar(255) DEFAULT NULL,
   `zip_code` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,8 +39,35 @@ CREATE TABLE `address` (
 
 LOCK TABLES `address` WRITE;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
-INSERT INTO `address` VALUES (1,'d','fd','d','d','g');
+INSERT INTO `address` VALUES (1,'dfsg','United States','IA','sadfsdfsdg','34546'),(2,'sdfg','United States','NC','sdf','23434'),(3,'sdfg','United States','NC','sdf','23433'),(4,'sdf','United States','CA','asd','87643');
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `authorities`
+--
+
+DROP TABLE IF EXISTS `authorities`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `authorities` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `authority` varchar(255) NOT NULL,
+  `member_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKke6m8fjuf7oi664ekyeu2maw0` (`member_name`),
+  CONSTRAINT `FKke6m8fjuf7oi664ekyeu2maw0` FOREIGN KEY (`member_name`) REFERENCES `users` (`member_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `authorities`
+--
+
+LOCK TABLES `authorities` WRITE;
+/*!40000 ALTER TABLE `authorities` DISABLE KEYS */;
+INSERT INTO `authorities` VALUES (1,'user','admin1'),(2,'user','suren'),(3,'your role in the format ROLE_CUSTOMER/ROLE_FARMER','santos'),(4,'user','dipen');
+/*!40000 ALTER TABLE `authorities` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -79,8 +106,18 @@ DROP TABLE IF EXISTS `member`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `member` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `date_of_membership` datetime DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `middle_name` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKjmifk4o18dly2usbpwsxwg6w3` (`username`),
+  CONSTRAINT `FKjmifk4o18dly2usbpwsxwg6w3` FOREIGN KEY (`username`) REFERENCES `users` (`member_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -89,6 +126,7 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
+INSERT INTO `member` VALUES (1,'2016-11-20 00:51:56','dfsg@gmail.com','sdf','sadf','ddd','3458798888','Mr.','admin1'),(2,'2016-11-20 01:15:35','lasdf@gas.com','Surendra','Lamichhane','','0962345984','Mr.','suren'),(3,'2016-11-20 01:16:36','lasdf@gas.com','Santosh','Dahal','','0962345984','Mr.','santos'),(4,'2016-11-20 01:17:44','sdfsadf@sd.com','Dipen','Lama','','2354389747','Mr.','dipen');
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -213,12 +251,11 @@ CREATE TABLE `product` (
   `name` varchar(255) DEFAULT NULL,
   `price` double NOT NULL,
   `qty` varchar(255) DEFAULT NULL,
-  `selected_category` varchar(255) DEFAULT NULL,
   `farmer_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKbayqrvuf45sj8abt0u51tf53p` (`farmer_id`),
   CONSTRAINT `FKbayqrvuf45sj8abt0u51tf53p` FOREIGN KEY (`farmer_id`) REFERENCES `member` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -227,8 +264,32 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,1,'d',5,'2',NULL,NULL);
+INSERT INTO `product` VALUES (2,1,'Apple',14,'12',NULL),(3,1,'Orange',15,'20',NULL),(4,1,'Banana',20,'15',NULL);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `member_name` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`member_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES ('admin1','admin1'),('dipen','a'),('santos','a'),('suren','a');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -240,4 +301,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-19 12:35:56
+-- Dump completed on 2016-11-20  1:20:39

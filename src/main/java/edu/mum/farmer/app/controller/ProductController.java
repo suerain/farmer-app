@@ -24,20 +24,40 @@ public class ProductController {
 	@RequestMapping(value="/product", method=RequestMethod.GET )
 	public String createProductForm( Principal user , Model model) {
 		//Accessing the member to set the Member with Farmer role to Product
-		Member member=memberService.findByUserName(user.getName());
-		System.out.println(member.getFirstName());
+		//Member member=memberService.findByUserName(user.getName());
+		//System.out.println(member.getFirstName());
 	
-		model.addAttribute("user",user);
+		//model.addAttribute("user",user);
+		Product product = new Product();
+		model.addAttribute("product",product);
 		return "create_product";
+		
 	}
 	
 	@RequestMapping(value="/product", method=RequestMethod.POST )
 	public String createProduct(Model model,Product product) {
 		System.out.println(product.getName());
 		productService.saveProduct(product);
-		return "redirect:create_product";
+		return "redirect:test";
 	}
 	
+
+	@RequestMapping(value="/productlist", method=RequestMethod.GET )
+	public String listProduct(Model model) {
+		//Accessing the member to set the Member with Farmer role to Product
+		//Member member=memberService.findByUserName(user.getName());
+		//System.out.println(member.getFirstName());
+		//productService
+		//model.addAttribute("user",user);
+		return "template/base_template";
+		
+	}
+	
+	@RequestMapping(value="/test", method=RequestMethod.GET )
+	public String testProduct() {
+		System.out.println("HERE Dipen");
+		return "template/base_template";
+	}
 	
 	
 }

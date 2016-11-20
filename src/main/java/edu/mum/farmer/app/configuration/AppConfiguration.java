@@ -27,17 +27,17 @@ public class AppConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/", "/dashboard").permitAll().anyRequest().authenticated().
+		http.authorizeRequests().antMatchers("/", "/dashboard","/test","/resources/**").permitAll().anyRequest().authenticated().
 
 				and().formLogin().loginPage("/login").permitAll().and().logout().permitAll();
 	}
 
 	// for query based multiple user authorization
 
-	/*
-	 * @Autowired public void configureGlobal(AuthenticationManagerBuilder auth)
-	 * throws Exception {
-	 * auth.inMemoryAuthentication().withUser("admin").password("admin").roles(
-	 * "USER"); }
-	 */
+	
+	  /*@Autowired public void configureGlobal(AuthenticationManagerBuilder auth)
+	  throws Exception {
+	  auth.inMemoryAuthentication().withUser("admin").password("admin").roles(
+	  "USER"); }*/
+	 
 }

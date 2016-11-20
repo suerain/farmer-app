@@ -2,6 +2,7 @@ package edu.mum.farmer.app.domain;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,11 +17,9 @@ public class Product {
 	private String name;
 	private String qty;
 	private double price;
-	@Enumerated
+	@Enumerated(EnumType.ORDINAL)
 	private Category category;
-
-	private String selectedCategory;
-
+	
 	@OneToOne(cascade = CascadeType.PERSIST)
 	private Member farmer;
 
@@ -30,14 +29,6 @@ public class Product {
 
 	public void setFarmer(Member farmer) {
 		this.farmer = farmer;
-	}
-
-	public String getSelectedCategory() {
-		return selectedCategory;
-	}
-
-	public void setSelectedCategory(String selectedCategory) {
-		this.selectedCategory = selectedCategory;
 	}
 
 	public String getName() {
