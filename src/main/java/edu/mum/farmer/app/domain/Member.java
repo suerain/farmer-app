@@ -4,7 +4,9 @@
 package edu.mum.farmer.app.domain;
 
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,6 +15,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 /*import javax.persistence.Transient;*/
 import javax.validation.Valid;
@@ -62,6 +66,17 @@ public class Member {
 	@Column(name="dateOfMembership")
 	private Date dateOfMembership=new Date();
 	
+	@OneToMany(mappedBy="farmer")
+	private List<Product> products =new ArrayList<>();
+	
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+
 	public String getPhone() {
 		return phone;
 	}
@@ -167,8 +182,10 @@ public class Member {
 	}
 	*/
 	
-	
-	
+	public void addProduct(Product product)
+	{
+		products.add(product);
+	}
 	
 	
 	
