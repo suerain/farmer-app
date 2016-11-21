@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -20,7 +19,9 @@ public class Product {
 	@Enumerated
 	private Category category;
 
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	private String selectedCategory;
+
+	@OneToOne(cascade = CascadeType.PERSIST)
 	private Member farmer;
 
 	public Member getFarmer() {
@@ -29,6 +30,14 @@ public class Product {
 
 	public void setFarmer(Member farmer) {
 		this.farmer = farmer;
+	}
+
+	public String getSelectedCategory() {
+		return selectedCategory;
+	}
+
+	public void setSelectedCategory(String selectedCategory) {
+		this.selectedCategory = selectedCategory;
 	}
 
 	public String getName() {
@@ -79,7 +88,7 @@ public class Product {
 	}
 
 	public void setCategory(Category category) {
-		this.category = category;
+		this.category = Category.FRUIT;
 	}
 
 }
