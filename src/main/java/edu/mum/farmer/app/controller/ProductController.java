@@ -54,8 +54,9 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/test", method=RequestMethod.GET )
-	public String testProduct() {
+	public String testProduct(Model model) {
 		System.out.println("HERE Dipen");
+		model.addAttribute("content", "content");
 		return "template/base_template";
 	}
 	
