@@ -6,19 +6,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Edit Product</title>
 </head>
 <body>
 
 <h1>
-			<!-- Hello <b><c:out value="${user.name}" /></b>  -->
+			Edit Product<!-- Hello <b><c:out value="${user.name}" /></b>  -->
 </h1>
-	<form:form action="product" commandName="product" method="POST">
+	<form:form action="/product/edit" commandName="product" method="POST">
 		<table>
 			<tr>
 				<td>Name</td>
 				<td>
-					<form:input path="name" />
+					<form:input path="id" cssStyle="display:none"/>
+					<form:input path="name"/>
 				</td>
 				<%-- <td><form:errors path="name"></form:errors> --%>
 			</tr>
